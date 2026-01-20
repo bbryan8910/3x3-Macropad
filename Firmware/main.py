@@ -7,27 +7,15 @@ keyboard = KMKKeyboard()
 macros = Macros()
 keyboard.modules.append(macros)
 
-keyboard.col_pins = (board.D1, board.D2, board.D3)  # Column0, Column1, Column2
-keyboard.row_pins = (board.D4, board.D6, board.D7)  # Row0, Row1, Row2
-keyboard.diode_orientation = 'COL2ROW'
+PINS = [board.D1, board.D2, board.D3, board.D4, board.D5, board.D6, board.D7, board.D8, board.D9]
+
+keyboard.matrix = KeysScanner(
+    pins=PINS,
+    value_when_pressed=False,
+)
 
 keyboard.keymap = [
-    [
-        # Top row 
-        KC.F13,                             
-        KC.F14,
-        KC.F15,
-        
-        # Middle row 
-        KC.F16,
-        KC.F17,              
-        KC.F18,                            
-        
-        # Bottom row 
-        KC.AUDIO_VOL_DOWN,
-        KC.AUDIO_MUTE,
-        KC.AUDIO_VOL_UP,
-    ]
+    [KC.F13, KC.F14, KC.F15, KC.F16, KC.F17, KC.F18, KC.AUDIO_VOL_DOWN, KC.AUDIO_MUTE, KC.AUDIO_VOL_UP]
 ]
 
 if __name__ == '__main__':
